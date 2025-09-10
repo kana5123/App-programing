@@ -1,4 +1,4 @@
-import Title, { Counter } from "./components/FruitList";
+import Title, { Counter } from "./components/앱프 1차 과제";
 
 function App() {
   return (
