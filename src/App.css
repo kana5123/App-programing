@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+button { padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc;}
+input { padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+.card { border: 1px solid #ddd; border-radius: 12px; padding: 16px}

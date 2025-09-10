@@ -16,17 +16,19 @@ export default function Title (props) {
 
 
 
+
 export function Counter() {
 
     const [like_count, setCount] = useState(0);
 
     const handleInc = () => {
-    setCount(like_count+1)
+    setCount(c => c+1)
     }
 
 return (
     <div>
         <p>좋아요 개수: {like_count} </p>
         <button onClick={handleInc}> 좋아요 </button> 
+        <button onClick={()=>setCount(0)}> 리셋 </button> 
     </div>
 )}
