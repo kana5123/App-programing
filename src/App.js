@@ -1,24 +1,42 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ProfileCard from "./components/ProfileCard";
-import LikeToggle from "./components/LikeToggle";
-import Counter from "./components/Counter";
-import StudentList from "./components/StudentList";
-import Greeter from "./components/Greeter";
-export default function App() {
-  return(
-    <div className= "container">
-      <Header />
-      <ProfileCard
-name = "강이의"
-major= "제주대학교 인공지능학과"
-interests={["자연어처리", "농구", "음악"]}
-    />
-    <Counter />
-    <LikeToggle />
-    <Greeter />
-    <StudentList />
-    <Footer />
-  </div>
-  )
+import { useState } from "react";
+import Display from "./components/Display";
+import Keypad from "./components/Keypad";
+import History from "./components/History";
+import "./App.css";
+
+function App() {
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState([]);
+
+  const handleClick = (value) => {
+    if (value === "C") {
+      setInput("");
+      return;
+    }
+    if (value === "=") {
+      try {
+        const result = eval(input).toString();
+        setInput(result);
+        const newRecord = `${input} = ${result}`;
+        setHistory((prev) => [newRecord, ...prev].slice(0, 5));
+      } catch {
+        setInput("Error");
+      }
+      return;
+    }
+    setInput((prev) => prev + value);
+  };
+
+
+  return (
+    <div className="container">
+      <h1>React 계산기</h1>
+      {input === "Error" ? <p style={{ color: "red" }}>잘못된 수식!</p> : null}
+      <Display value={input} />
+      <Keypad onKey={handleClick} />
+      <History records={history} />
+    </div>
+  );
 }
+
+export default App;
