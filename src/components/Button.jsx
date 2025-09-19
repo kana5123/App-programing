@@ -1,15 +1,10 @@
 export default function Button({ label, onClick }) {
     const handle = () => {
-
-      if (typeof onClick === "function") {
-        onClick(label);
-      } else {
-        console.warn("Button onClick prop is not a function:", onClick);
-      }
+      if (typeof onClick === "function") onClick(label);
     };
   
     return (
-      <button className="btn" onClick={handle}>
+      <button type="button" className="btn" onClick={handle} aria-label={label}>
         {label}
       </button>
     );

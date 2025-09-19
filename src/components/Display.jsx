@@ -1,4 +1,9 @@
 export default function Display({ value }) {
-    return <div className="display">{value}</div>;
+    const text = (value ?? "").toString();
+    return (
+      <div className="display" role="status" aria-live="polite">
+        {text === "" ? "0" : text}
+      </div>
+    );
   }
   
