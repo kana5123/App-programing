@@ -1,42 +1,60 @@
-/* 깔끔한 기본값 */
-* { box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+/* --- PDF p27 카드 스타일 --- */
+.card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-/* 전체 폭 고정 */
-.container { max-width: 360px; margin: 24px auto; }
-h1 { text-align: center; }
-
-/* 표시창 */
-.display {
-  height: 56px;
-  border: 1px solid #ccc;
+/* 리스트 아이템 (PDF p27) */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
   border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 28px;
-  line-height: 40px;
-  text-align: right;
-  background: #fff;
 }
 
-/* 키패드: 숫자(3x4) + 연산자(세로 1열) */
-.keypad { display: grid; grid-template-columns: 3fr 1fr; gap: 12px; margin-top: 16px; }
-.numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.operators { display: grid; grid-auto-rows: 56px; gap: 12px; }
-
-/* 버튼 공통 */
-.btn {
-  width: 100%;
-  height: 56px;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  background: #f7f7f7;
-  font-size: 18px;
+/* 버튼 (PDF p27) */
+button {
+  margin-left: auto; /* 삭제 버튼을 오른쪽 끝으로 */
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #4dabf7;
+  color: white;
+  border: none;
   cursor: pointer;
-  white-space: nowrap;      /* "기록 초기화" 줄바꿈 방지 */
 }
-.btn:active { transform: translateY(1px); }
 
-/* 기록 영역 */
-.history { margin-top: 24px; }
-.history-header { display: flex; justify-content: space-between; align-items: center; }
-.history ul { list-style: disc inside; margin: 8px 0 0; padding: 0; }
+/* 부가 레이아웃 */
+.form-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.emoji-select, .priority-select, input {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.todo-text { flex: 1; }
+
+/* --- 우선순위 표시 (PDF p20 아이디어) --- */
+.high-priority    { border-left: 6px solid #fa5252; background: #fff5f5; }
+.medium-priority  { border-left: 6px solid #f59f00; background: #fff9db; }
+.low-priority     { border-left: 6px solid #868e96; background: #f8f9fa; }
+
+.high-badge, .medium-badge, .low-badge {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  text-transform: lowercase;
+}
+
+/* 배지 색 */
+.high-badge   { background: #ffe3e3; color: #c92a2a; }
+.medium-badge { background: #fff3bf; color: #e67700; }
+.low-badge    { background: #e9ecef; color: #495057; }
